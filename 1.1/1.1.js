@@ -1,0 +1,14 @@
+const myName = "Alex";
+console.log(typeof myName);
+const myID = 5436436;
+console.log(typeof myID);
+let myObj = {};
+console.log(typeof myObj);
+let isRich = false;
+console.log(typeof isRich);
+let zero = null;
+console.log(typeof zero);
+let x;
+console.log(typeof x);
+let sym1 = Symbol();
+console.log(typeof sym1);
