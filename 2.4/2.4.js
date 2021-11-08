@@ -23,6 +23,7 @@ const mydate = () => {
       break;
     case 6:
       myMonth = "July";
+      break;
     case 7:
       myMonth = "August";
       break;
