@@ -27,19 +27,21 @@ initial-scale=1.0"
     <div id="description">
       Select me and change my display property if you dare!
     </div>
+
+    <script>
+      //your js code here
+      //1
+      const header1 = (document.querySelector("h1").style.color = "blue");
+      //2
+      const paragraph = (document.querySelector("p").style.fontSize = "30px");
+      //3
+      const descr = (document.querySelector("#description").style.display =
+        "inline-block");
+      //4
+      const myBody = (document.querySelector("body").style.background =
+        "green");
+      //5
+      const myTitle = (document.title = "18.2");
+    </script>
   </body>
-  <script>
-    //your js code here
-    //1
-    const header1 = (document.querySelector("h1").style.color = "blue");
-    //2
-    const paragraph = (document.querySelector("p").style.fontSize = "30px");
-    //3
-    const descr = (document.querySelector("#description").style.display =
-      "inline-block");
-    //4
-    const myBody = (document.querySelector("body").style.background = "green");
-    //5
-    const myTitle = (document.title = "18.2");
-  </script>
 </html>
