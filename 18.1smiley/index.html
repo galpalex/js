@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18.1 smiley</title>
+    <style>
+      div {
+        padding-top: 20px 0px;
+        font-weight: 700;
+      }
+
+      form {
+        padding: 20px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>How many smileys do you want to see?</div>
+    <form name="smiley">
+      <input type="text" />
+      <!-- <input type="submit" value="submit" /> -->
+      <input class="btn" type="button" value="Submit" />
+    </form>
+    <div class="smiley"></div>
+
+    <script>
+      document.querySelector(".btn").addEventListener("click", addSmiley);
+      function addSmiley() {
+        const strSmiley = "<img src='face.png' width='35px' alt='smiley' />";
+        document.querySelector(".smiley").innerHTML = "";
+        const inputVal = +document.querySelector("input[type='text']").value;
+        if (typeof inputVal === "number" && inputVal > 0) {
+          for (let i = 0; i < inputVal; i++) {
+            document.querySelector(".smiley").innerHTML += strSmiley;
+          }
+        } else alert("Enter valid number");
+      }
+    </script>
+  </body>
+</html>
