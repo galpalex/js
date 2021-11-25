@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>19.1</title>
+  </head>
+  <body>
+    <ul>
+      <li>title 1</li>
+      <li class="start-here">title 2</li>
+      <li>
+        <ul>
+          <li>sub title 1</li>
+          <li>sub title 2</li>
+          <li>sub title 3</li>
+        </ul>
+      </li>
+      <li>title 3</li>
+    </ul>
+    <div>
+      <p>Hello World!</p>
+    </div>
+    <script>
+      const startHere = document.querySelector(".start-here");
+      //1
+      startHere.textContent = "main title";
+      //2
+      const li = document.createElement("li");
+      li.innerText = "sub title 4";
+      const ul = startHere.nextElementSibling.children[0];
+      ul.appendChild(li);
+      //3
+      startHere.nextElementSibling.nextElementSibling.remove();
+      //4
+      document.title = "Master Of The Dom 19.1";
+      //5
+      let p = document.querySelector("p");
+      p.innerText =
+        "I'm gonna finish this Bootcamp and will be a Web Developer";
+    </script>
+  </body>
+</html>
