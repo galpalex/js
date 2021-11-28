@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>19.3</title>
+    <style>
+      div {
+        padding-top: 20px 0px;
+        font-weight: 700;
+      }
+
+      form {
+        padding: 20px 0px;
+      }
+      .border {
+        border: 1px black solid;
+        width: 20vw;
+        height: 20vh;
+      }
+      .num {
+        width: 2vw;
+        height: 3vh;
+      }
+      .cont,
+      .border {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .verifyBtn {
+        padding: 20px;
+      }
+      .btn {
+        color: white;
+        background: black;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <div>Text to copy:</div>
+      <div>123456</div>
+
+      <form id="verifyForm">
+        <div class="border">
+          <div class="inputText">
+            <input
+              autofocus="true"
+              type="text"
+              class="num"
+              maxlength="1"
+              pattern="[0-9]"
+            />
+            <input type="text" class="num" maxlength="1" pattern="[0-9]" />
+            <input type="text" class="num" maxlength="1" pattern="[0-9]" />
+            <input type="text" class="num" maxlength="1" pattern="[0-9]" />
+            <input type="text" class="num" maxlength="1" pattern="[0-9]" />
+            <input type="text" class="num" maxlength="1" pattern="[0-9]" />
+          </div>
+
+          <div class="verifyBtn">
+            <input class="btn" type="submit" value="Verify" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      let inputAreaArr = document.querySelectorAll(".num");
+      let count = 0;
+
+      for (let i = 0; i < inputAreaArr.length; i++) {
+        inputAreaArr[i].addEventListener("input", () => {
+          if (inputAreaArr[i].value.match(/^[0-9]+$/) != null) {
+            count++;
+            if (i < inputAreaArr.length - 1) inputAreaArr[i + 1].focus();
+          } else alert("enter valid number");
+          if (count === 6) document.getElementById("verifyForm").submit();
+        });
+      }
+      //credit stackoverflow & Haldon
+      function handlePaste(e) {
+        let clipboardData, pastedData;
+
+        // Stop data actually being pasted into
+        e.stopPropagation();
+        e.preventDefault();
+
+        // Get pasted data via clipboard API
+        clipboardData = e.clipboardData || window.clipboardData;
+        pastedData = clipboardData.getData("Text");
+
+        if (pastedData.length !== 6) alert("paste valid number");
+        else {
+          let count = 0;
+          for (let i = 0; i < pastedData.length; i++) {
+            inputAreaArr[i].value = pastedData[i];
+            if (inputAreaArr[i].value.match(/^[0-9]+$/) != null) {
+              count++;
+            } else return alert("paste valid number");
+            if (count === 6) document.getElementById("verifyForm").submit();
+          }
+        }
+      }
+
+      inputAreaArr[0].addEventListener("paste", handlePaste);
+    </script>
+  </body>
+</html>
