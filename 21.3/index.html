@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21.3</title>
+    <style>
+      button {
+        padding: 10px 20 px;
+      }
+      textarea:invalid {
+        border: 2px dashed red;
+      }
+
+      textarea:valid {
+        border: 2px solid lime;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Why are you interested in this position?</p>
+      <h4></h4>
+      <textarea
+        id="story"
+        name="story"
+        rows="5"
+        cols="33"
+        minlength="100"
+      ></textarea>
+      <div><button>Click here!</button></div>
+    </div>
+    <script>
+      const output = document.querySelector("h4");
+      const input = document.querySelector("textarea");
+      const btn = document.querySelector("button");
+
+      btn.addEventListener("click", () => {
+        if (input.value.length < 100) {
+          output.innerText = `You must enter at least 100  characters before clicking the button and now you entered ${input.textLength}`;
+        } else output.innerText = "Thanks for submitting the form";
+      });
+    </script>
+  </body>
+</html>
