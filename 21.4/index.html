@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21.4</title>
+    <style>
+      .lampOff {
+        background: url("toppng.com-light-on-off-icon-640x480.png") no-repeat 0
+          0;
+        width: 388px;
+        height: 626px;
+      }
+      .lampOn {
+        background: url("toppng.com-light-on-off-icon-640x480.png") no-repeat -447px
+          0;
+        width: 388px;
+        height: 626px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lampOff"></div>
+    <script>
+      const lampoff = document.querySelector(".lampOff");
+      lampoff.addEventListener("click", () => {
+        lampoff.classList.toggle("lampOn");
+      });
+    </script>
+  </body>
+</html>
