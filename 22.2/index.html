@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>22.2</title>
+    <style>
+      .lampOff {
+        background: url("toppng.com-light-on-off-icon-640x480.png") no-repeat -447px
+          0;
+        width: 388px;
+        height: 626px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="myCheckBox" />
+    <div class="lampOff"></div>
+
+    <script>
+      const checkBox = document.querySelector("#myCheckBox");
+      const lampoff = document.querySelector(".lampOff");
+      lampoff.classList = "";
+      checkBox.addEventListener("input", (e) => {
+        if (checkBox.checked) lampoff.classList = "lampOff";
+        else lampoff.classList = "";
+      });
+    </script>
+  </body>
+</html>
