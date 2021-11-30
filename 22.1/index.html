@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>22.1</title>
+    <style>
+      form {
+        display: flex;
+        justify-items: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signup-form" action="" method="get">
+      <input type="text" id="name" name="name" placeholder="your name..." />
+      <input type="number" id="age" name="age" placeholder="your age..." />
+      <input
+        type="email"
+        id="email"
+        name="Name"
+        placeholder="your email@mail.com..."
+      />
+
+      <button>Submit</button>
+    </form>
+
+    <div class="validityCheck"></div>
+    <script>
+      const form = document.querySelector("#signup-form");
+      const nameInput = document.querySelector("#name");
+      const ageInput = document.querySelector("#age");
+      const emailInput = document.querySelector("#email");
+      const userOutput = document.querySelector(".validityCheck");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const valid = confirm(
+          `You submitted name: ${nameInput.value}, age: ${ageInput.value}, email: ${emailInput.value}. Are you sure it is correct?`
+        );
+        if (valid) {
+          userOutput.innerText =
+            "Congratulations you successfully sent this form";
+          setTimeout(() => {
+            form.submit();
+          }, 3000);
+        } else {
+          userOutput.innerText =
+            "Please change the information and submit again the form";
+        }
+      });
+    </script>
+  </body>
+</html>
