@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>233.1this</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="element">test</div>
+    <script>
+      //console.log(this);
+      //1. it refers to global object => window because it exists in body and  in browser it refers to global object => window
+
+      //2.
+      // const myObj = {
+      //   name: "Timmy",
+      //   greet() {
+      //     console.log(`Hello ${this.name}`);
+      //   },
+      // };
+      // myObj.greet();
+      //a arrow function does not get it's own version of this that's why it refers to global object window - PRINTS HELLO
+      //b change to function declaration will fix it- now it refers to object myObj
+
+      //3
+      // const myFuncDec = function () {
+      //   console.log(this);
+      // };
+
+      // it refers to global object => window because it inside function that sits in body
+
+      //4
+      // const myFuncArrow = () => {
+      //   console.log(this);
+      // };
+      // myFuncArrow();
+      //this retains the value of the enclosing lexical context's this. In global code, it will be set to the global object: WINDOW.
+
+      //5
+      // document.querySelector(".element").addEventListener("click", () => {
+      //   console.log(this);
+      // });
+      //arrow function points to window, if i change to function declaration it will point to element
+      //add click event, add div with class element
+    </script>
+  </body>
+</html>
