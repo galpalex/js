@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24.2prototype</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function Pokemon(pokemonName, pokemonType, pokemonAttackList) {
+        this.name = pokemonName;
+        this.type = pokemonType;
+        this.attackList = pokemonAttackList;
+      }
+      //1
+      let myPokemon = new Pokemon("Melmetal", "Steel", [
+        "Flash Cannon",
+        "Thunder Wave",
+        "Hyper Beam",
+        "Acid Armor",
+      ]);
+      // console.log(myPokemon.name);
+      // console.log(myPokemon.type);
+      // console.log(myPokemon.attackList);
+      //2
+      Pokemon.prototype.callPokemon = function (
+        pokemonName,
+        pokemonType,
+        pokemonAttackList
+      ) {
+        console.log(`I choose
+you, ${this.name}`);
+      };
+      myPokemon.callPokemon();
+
+      //3
+      Pokemon.prototype.attack = function (
+        pokemonName,
+        pokemonType,
+        pokemonAttackList
+      ) {
+        console.log(`${this.name} used ${this.attackList[0]}`);
+      };
+      myPokemon.attack();
+    </script>
+  </body>
+</html>
