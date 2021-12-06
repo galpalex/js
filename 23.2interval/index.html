@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>23.2</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="stop-watch"></div>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+
+    <script>
+      const start = document.querySelector(".start");
+      const mystop = document.querySelector(".stop");
+      const stopWatch = document.querySelector(".stop-watch");
+      let minutes = 0;
+      let seconds = 0;
+      let millis = 0;
+      let startMili = Date.now();
+      function stopwatch() {
+        millis = Date.now() - startMili;
+
+        if (millis > 1000) {
+          seconds += 1;
+          startMili = Date.now();
+        }
+        if (seconds === 60) {
+          minutes += 1;
+          seconds = 0;
+        }
+        stopWatch.innerHTML = ` ${minutes}:${seconds}:${millis}`;
+      }
+      let stopTimer;
+      start.addEventListener("click", (e) => {
+        stopTimer = setInterval(stopwatch, 1);
+      });
+      mystop.addEventListener("click", (e) => {
+        clearInterval(stopTimer);
+      });
+    </script>
+  </body>
+</html>
