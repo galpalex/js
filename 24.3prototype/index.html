@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24.3prototype</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      Array.prototype.myFilter = function (callback) {
+        let newArray = [];
+        for (let item in this) {
+          if (callback(this[item]) === true) {
+            newArray.push(this[item]);
+          }
+        }
+        return newArray;
+      };
+
+      const arr = [2, 4, 5, 6, 7, 8, 8, 9, 22, 10];
+      // let res = arr.myFilter((item) => item % 2 === 0);
+      // console.log(res);
+      // let original = arr.filter((item) => item % 2 === 0);
+      // console.log(original);
+      Array.prototype.myFind = function (callback) {
+        for (let item in this) {
+          if (callback(this[item]) === true) {
+            return this[item];
+          }
+        }
+      };
+      // const originalFind = arr.find((element) => element > 6);
+      // const originalFind2 = arr.find((element) => element > 22);
+      // console.log(originalFind);
+      // console.log(originalFind2);
+      // const myFuncFind = arr.myFind((element) => element > 6);
+      // const myFuncFind2 = arr.myFind((element) => element > 22);
+      // console.log(myFuncFind);
+      // console.log(myFuncFind2);
+    </script>
+  </body>
+</html>
