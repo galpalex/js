@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25.1</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const hero = {
+        health: 5,
+        power: 68,
+        getStrength: function () {
+          if (this.health <= 5) {
+            return this.power - 10;
+          } else return this.power;
+        },
+      };
+      function whoIsStronger(getStrength) {
+        const myStrength = 82;
+        if (getStrength() < myStrength) {
+          return "I am stronger";
+        } else return "You are stronger";
+      }
+      //console.log(whoIsStronger(hero.getStrength));
+      //the wrong is that we expect to get  "I am stronger" and instead we get "You are stronger" because there is issue that whoIsStronger function doesnt recognize that the argument hero.getStrength refers to object hero
+      console.log(whoIsStronger(hero.getStrength.bind(hero)));
+      //with .bind(hero) i told to JS to look the argument at object hero and now received return "I am stronger";
+    </script>
+  </body>
+</html>
