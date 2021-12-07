@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>27.1</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const isTenPromise = (num) => {
+        return new Promise((resolve) => {
+          if (num > 10) {
+            return resolve();
+          } else {
+            return reject();
+          }
+        });
+      };
+
+      isTenPromise(15).then(() => {
+        console.log("Promise resolved");
+      });
+      isTenPromise(5).catch(() => {
+        console.error("Error: Promise rejected");
+      });
+    </script>
+  </body>
+</html>
