@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25.2</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "Alex",
+        age: 36,
+        city: "Rehovot",
+        gradeMath: 88,
+        printName() {
+          console.log(this.name);
+        },
+        printNameAgain() {
+          setTimeout(this.printName.bind(this), 4000);
+        },
+      };
+      // person.printName();
+      person.printNameAgain();
+    </script>
+  </body>
+</html>
