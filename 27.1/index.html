@@ -9,21 +9,23 @@
   <body>
     <script>
       const isTenPromise = (num) => {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
           if (num > 10) {
-            return resolve();
+            return resolve(num);
           } else {
             return reject();
           }
-        });
+        })
+          .then((res) => {
+            console.log("Promise resolved", res);
+          })
+          .catch(() => {
+            console.error("Error: Promise rejected");
+          });
       };
 
-      isTenPromise(15).then(() => {
-        console.log("Promise resolved");
-      });
-      isTenPromise(5).catch(() => {
-        console.error("Error: Promise rejected");
-      });
+      isTenPromise(15);
+      isTenPromise(5);
     </script>
   </body>
 </html>
