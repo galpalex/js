@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>27.2</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const foods = ["falafel", "hamburger", "sushi", "apple", "sabich"];
+      const foodNotAlphabet = [
+        "sabich",
+        11,
+        "falafel",
+        "hamburger",
+        "sushi",
+        "apple",
+      ];
+
+      const makeAllCaps = (array) => {
+        return new Promise((resolve, reject) => {
+          for (const word of array) {
+            if (typeof word !== "string") {
+              return reject(`Isn't string ${word}, from makeAllCaps function`);
+            }
+          }
+          return resolve(array.map((item) => item.toUpperCase()));
+        });
+      };
+
+      const sortWords = (array) => {
+        return new Promise((resolve, reject) => {
+          for (const word of array) {
+            if (typeof word !== "string") {
+              return reject(`Isn't string ${word}, from  sortWords function`);
+            }
+          }
+          return resolve(array.slice().sort());
+        });
+      };
+
+      makeAllCaps(foodNotAlphabet)
+        .then(sortWords)
+        .then((res) => console.log(res))
+        .catch((error) => console.error(error));
+
+      makeAllCaps(foods)
+        .then(sortWords)
+        .then((res) => console.log(res))
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>
