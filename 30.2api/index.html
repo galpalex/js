@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+    <title>30.2</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #5bc0de;
+      }
+      a {
+        text-decoration: none;
+        color: rgb(247, 240, 247);
+      }
+
+      .container {
+        display: flex;
+        height: 10vh;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        color: white;
+        background-color: #333333;
+      }
+      button {
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 10px;
+        color: white;
+        background-color: tomato;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      input {
+        padding: 5px 10px;
+        width: 30vw;
+        border-radius: 10px;
+      }
+      img {
+        width: 200px;
+        height: 300px;
+      }
+      .output {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        padding: 10px;
+      }
+      span {
+        padding: 10px;
+        color: white;
+      }
+      #name {
+        color: #333333;
+        font-size: 1.6rem;
+        padding: 10px;
+        font-weight: bold;
+      }
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 7px;
+        border: 1px solid black;
+        width: 40vw;
+        text-align: justify;
+        margin: 10px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        background: rgb(100, 151, 202);
+      }
+      i {
+        margin: 10px;
+      }
+      button:hover,
+      i:hover {
+        opacity: 0.7;
+      }
+      p {
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3></h3>
+    <div class="container">
+      <a target="_blank" href="http://www.omdbapi.com/"
+        ><i class="fas fa-video fa-3x"></i
+      ></a>
+      <input autofocus="true" type="text" placeholder="movie..." />
+      <button>Search Movie</button>
+    </div>
+    <div class="output"></div>
+
+    <script>
+      const inputText = document.querySelector("input");
+      const submit = document.querySelector("button");
+      const output = document.querySelector(".output");
+
+      async function getMovie(movie) {
+        try {
+          const response = await (
+            await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=b374dadf`)
+          ).json();
+          return (output.innerHTML = `<div class="card-container"><img src="${response.Poster}"><p id="name">${response.Title}</p><div class="card-info"><p>Genre:<span>${response.Genre}</span></p><p>Year:<span>${response.Year}</span></p><p>Plot:<span>${response.Plot}</span></p><p>Director:<span>${response.Director}</span></p><p>Actors:<span>${response.Actors}</span></p><p>Rating of movie from IMDB:<span>${response.imdbRating}</span></p><p>Rating of movie from Rotten Tomatoes:<span>${response.Ratings[1].Value}</span></p><p>Rating of movie from Metacritic:<span>${response.Ratings[2].Value}</span></p></div></div>`);
+        } catch (err) {
+          console.error(err, "Movie not found");
+          return (output.innerHTML = `<div>Movie not found</div>`);
+        }
+      }
+
+      submit.addEventListener("click", () => {
+        const temp = inputText.value;
+        inputText.value = "";
+        inputText.focus();
+        return getMovie(temp);
+      });
+      inputText.addEventListener("keypress", (event) => {
+        if (event.keyCode === 13) {
+          // key code of the keybord key Enter
+          const temp = inputText.value;
+          inputText.value = "";
+          inputText.focus();
+          return getMovie(temp);
+        }
+      });
+    </script>
+  </body>
+</html>
